@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>[jenkins-surface-discovery]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!--  Load site-specific customizations after bootstrap. -->
+<style>
+body {
+  padding-top: 50px;  /* Move body of page below navbar. */
+}
+
+.page-content {
+  padding: 10px;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+</style>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+<![endif]-->
+</head>
+<body>
+
+  <!-- Responsive navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <!--  Display three horizontal lines when navbar collapsed. -->
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">[jenkins-surface-discovery]</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#hosts">Hosts and Ports</a></li>
+          <li><a href="#httpx">HTTP Enumeration</a></li>
+          <li><a href="#xss">XSS Scan</a></li>
+          <li><a href="#nuclei">Vulnerability Scan</a></li>
+          <li><a href="#ffuf">Fuzzing Scan</a></li>
+          <li><a href="https://github.com/vagnerd/jenkins-surface-discovery">JSD Github</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+    <h1>Jenkins Surface Discovery Report</h1>
+  </div>
+
+  <!-- Load Bootstrap JavaScript components -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<font size="2">
+<div class="container" id="hosts">
+<h3>Surface hosts and ports discovered</h3>
+      <br>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-md-4">
+          <col class="col-md-7">
+        </colgroup>
+	<tbody>
+	<tr><th>Host</th><th>TCP Port</th></tr>
+<tr><th>testphp.vulnweb.com</th><td>80</td></tr>
+<tr><th>44.228.249.3</th><td>80</td></tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </div>
+
+
+<font size="2">
+<div class="container" id="httpx">
+<h3>Surface HTTP services discovered</h3>
+      <br>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-md-4">
+          <col class="col-md-7">
+        </colgroup>
+        <tbody>
+        <tr><th>Host</th><th>HTTP Response</th></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</th><td>
+ [[32m200[0m] [[36mHome of Acunetix Art[0m] [[35mDreamWeaver,Nginx:1.19.0,PHP:5.6.40,Ubuntu[0m]</td></tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </div>
+
+
+<font size="2">
+<div class="container" id="xss">
+<h3>Surface XSS/SQLi vulnerability scan</h3>
+      <br>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-md-14">
+          <col class="col-md-17">
+        </colgroup>
+        <tbody>
+        <tr><th>Vulnerability</th><th>Severity</th><th>URL</th></tr>
+<tr><th>[reflected-xss]</th><td>[medium] </td><td>http://testphp.vulnweb.com/hpp/?pp=12'"><40939</td></tr>
+<tr><th>[reflected-xss]</th><td>[medium] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=1'"><40939</td></tr>
+<tr><th>[reflected-xss]</th><td>[medium] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=2'"><40939</td></tr>
+<tr><th>[reflected-xss]</th><td>[medium] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=3'"><40939</td></tr>
+<tr><th>[reflected-xss]</th><td>[medium] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=4'"><40939</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/artists.php?artist=1'</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/artists.php?artist=2'</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/artists.php?artist=3'</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=1'</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=2'</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=3'</td></tr>
+<tr><th>[sqli-error-based:mysql]</th><td>[critical] </td><td>http://testphp.vulnweb.com/listproducts.php?cat=4'</td></tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+<font size="2">
+<div class="container" id="nuclei">
+<h3>Surface Vulnerability scan</h3></div>
+
+      <br>
+      <div class="container">
+      <h4>testphp.vulnweb.com</h4>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-md-14">
+          <col class="col-md-17">
+        </colgroup>
+        <tbody>
+<tr><th>URL</th><th>Vulnerability</th><th>Severity</th><th>Description</th></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[tech-detect:dreamweaver] </td><td>[info]</td><td>[tech-detect:dreamweaver] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[tech-detect:nginx] </td><td>[info]</td><td>[tech-detect:nginx] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[tech-detect:php] </td><td>[info]</td><td>[tech-detect:php] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[nginx-version] </td><td>[info]</td><td>[nginx-version] [http] [info] http://testphp.vulnweb.com [nginx/1.19.0]</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[php-detect] </td><td>[info]</td><td>[php-detect] [http] [info] http://testphp.vulnweb.com [5.6.40]</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:permissions-policy] </td><td>[info]</td><td>[http-missing-security-headers:permissions-policy] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:x-frame-options] </td><td>[info]</td><td>[http-missing-security-headers:x-frame-options] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:cross-origin-embedder-policy] </td><td>[info]</td><td>[http-missing-security-headers:cross-origin-embedder-policy] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:cross-origin-opener-policy] </td><td>[info]</td><td>[http-missing-security-headers:cross-origin-opener-policy] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:strict-transport-security] </td><td>[info]</td><td>[http-missing-security-headers:strict-transport-security] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:content-security-policy] </td><td>[info]</td><td>[http-missing-security-headers:content-security-policy] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:x-content-type-options] </td><td>[info]</td><td>[http-missing-security-headers:x-content-type-options] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:x-permitted-cross-domain-policies] </td><td>[info]</td><td>[http-missing-security-headers:x-permitted-cross-domain-policies] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:referrer-policy] </td><td>[info]</td><td>[http-missing-security-headers:referrer-policy] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:clear-site-data] </td><td>[info]</td><td>[http-missing-security-headers:clear-site-data] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></th><td>[http-missing-security-headers:cross-origin-resource-policy] </td><td>[info]</td><td>[http-missing-security-headers:cross-origin-resource-policy] [http] [info] http://testphp.vulnweb.com</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com/.idea/workspace.xml">http://testphp.vulnweb.com/.idea/workspace.xml</a></th><td>[idea-folder-exposure] </td><td>[info]</td><td>[idea-folder-exposure] [http] [info] http://testphp.vulnweb.com/.idea/workspace.xml</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com/">http://testphp.vulnweb.com/</a></th><td>[waf-detect:nginxgeneric] </td><td>[info]</td><td>[waf-detect:nginxgeneric] [http] [info] http://testphp.vulnweb.com/</td></tr>
+<tr><th><a href="testphp.vulnweb.com">testphp.vulnweb.com</a></th><td>[txt-fingerprint] </td><td>[info]</td><td>[txt-fingerprint] [dns] [info] testphp.vulnweb.com ["google-site-verification:toEctYsulNIxgraKk7H3z58PCyz2IOCc36pIupEPmYQ"]</td></tr>
+<tr><th><a href="http://testphp.vulnweb.com/clientaccesspolicy.xml">http://testphp.vulnweb.com/clientaccesspolicy.xml</a></th><td>[clientaccesspolicy] </td><td>[info]</td><td>[clientaccesspolicy] [http] [info] http://testphp.vulnweb.com/clientaccesspolicy.xml</td></tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+<font size="2">
+<div class="container" id="ffuf">
+<h3>Surface Fuzzing scan</h3></div>
+
+      <br>
+      <div class="container">
+      <h4>testphp.vulnweb.com</h4>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-md-14">
+          <col class="col-md-17">
+        </colgroup>
+        <tbody>
+<tr><th>testphp.vulnweb.com</th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/.idea</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/.idea/misc.xml</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/.idea/modules.xml</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/.idea/vcs.xml</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/.idea/workspace.xml</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com///evil.com/%2F..</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com//admin/</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com//evil.com/%2F..</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/?view=log</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/?wsdl</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/CVS</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/admin</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/admin/</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/admin/../admin</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/cgi-bin</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/cgi-bin/</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/clientaccesspolicy.xml</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/crossdomain.xml</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/favicon.ico</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/images</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/index.php</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/index.php?appservlang=%3Csvg%2Fonload=confirm%28%27xss%27%29%3E</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/index.php?r=students/guardians/create&id=1%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/index.php?redirect=//evil.com</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/index.php?redirect=/\/evil.com/</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/login.php</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/pictures</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/robots.txt/../admin/</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/secured</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/static/../admin/</xmp></th></tr>
+<tr><th><xmp>http://testphp.vulnweb.com/vendor</xmp></th></tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+<!-- Author: Vagnerd Fernandes - vagner.rodrigues@gmail.com -->
+</body>
+</html>
