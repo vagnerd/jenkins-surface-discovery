@@ -1,9 +1,9 @@
 # jenkins-surface-discovery
 Jenkins Attack Surface Discovery Pipeline
 
-[Readme in portuguese version](https://github.com/vagnerd/jenkins-surface-discovery/blob/main/README-pt.md) 🇧🇷
+[Readme in portuguese version](https://github.com/vagnerd/jenkins-surface-discovery/blob/master/README-pt.md) 🇧🇷
 
-[1]
+![1](https://github.com/vagnerd/jenkins-surface-discovery/assets/4332906/70794e22-2b49-4b90-90e8-7cdfde0ea1ab)
 
 ### 
 
@@ -56,7 +56,7 @@ To setup jenkins-surface-discovery you need to install the prerequisites on your
 
 *New Item > Pipeline > Pipeline script from SCM > SCM GIT > Repository URL = https://github.com/vagnerd/jenkins-surface-discovery.git*
 
-[2]
+![2](https://github.com/vagnerd/jenkins-surface-discovery/assets/4332906/8ff8f61d-c6a0-4a46-97c9-546e0851a2bc)
 
 **Script Path**
 
@@ -101,7 +101,7 @@ The pipeline needs some environments for it to work there are several ways to do
 
 To start the pipeline just create a new pipeline build (Default Jenkins) or click "run" in blueocean:
 
-[3]
+![3](https://github.com/vagnerd/jenkins-surface-discovery/assets/4332906/3c6c062b-7cef-4629-b654-19f87f07d663)
 
 When triggering the pipeline build two information are requested, the target domain of the pipelines and if it is a rescan by checking the rescan option all previous target information is discarded.
 
@@ -128,23 +128,23 @@ It is possible to invoke Jenkins Surface Discovery in other existing pipelines, 
         }
 ```
 
-[4]
+![4](https://github.com/vagnerd/jenkins-surface-discovery/assets/4332906/b9030768-955f-420b-9afa-b351823219ab)
 
-*The pipeline above trigger the build to generate the code after which it deploys and finally invokes the tests at each build. The complete pipeline example is available in the repository: [pipeline-example](https://github.com/vagnerd/jenkins-surface-discovery/blob/main/examples/pipelines/deployment-pipeline.groovy).*  
+*The pipeline above trigger the build to generate the code after which it deploys and finally invokes the tests at each build. The complete pipeline example is available in the repository: [pipeline-example](https://github.com/vagnerd/jenkins-surface-discovery/blob/master/examples/pipelines/deployment-pipeline.groovy).*  
 
 ### Reports
 
-[5]
+![5](https://github.com/vagnerd/jenkins-surface-discovery/assets/4332906/93583403-e86d-4e25-8d83-15c13067b398)
 
 At the end of the pipeline an HTML report is available as an artifact with a summary of the tests, the execution time can be long and vary depending on the number of hosts and the response time of the hosts.
 
-[6]
+![6](https://github.com/vagnerd/jenkins-surface-discovery/assets/4332906/68aa2266-b1d9-42fa-a377-3f54f4b23ee0)
 
-Attached to the repository there are two example reports in [reports-example](https://github.com/vagnerd/jenkins-surface-discovery/tree/main/examples/reports) of target *vulnweb.com*:
+Attached to the repository there are two example reports in [reports-example](https://github.com/vagnerd/jenkins-surface-discovery/tree/master/examples/reports) of target *vulnweb.com*:
 
-[report-vulnweb.com.html](https://github.com/vagnerd/jenkins-surface-discovery/tree/main/examples/reports/report-vulnweb.com.html)
+[report-vulnweb.com.html](https://github.com/vagnerd/jenkins-surface-discovery/tree/master/examples/reports/report-vulnweb.com.html)
 
-[report-testphp.vulnweb.com.html](https://github.com/vagnerd/jenkins-surface-discovery/tree/main/examples/reports/report-testphp.vulnweb.com.html)
+[report-testphp.vulnweb.com.html](https://github.com/vagnerd/jenkins-surface-discovery/tree/master/examples/reports/report-testphp.vulnweb.com.html)
 
 
 
